@@ -56,7 +56,7 @@ export const filters: Filter[] = [
 export const categories: Category[] = [
     {
         "title": "New Arrivals",
-        "img": "/src/assets/img/shop-stands.jpg",
+        "img": "/assets/img/shop-stands.jpg",
         "subcategories": [
             {
                 "title": "Featured",
@@ -92,7 +92,7 @@ export const categories: Category[] = [
     },
     {
         "title": "Men",
-        "img": "/src/assets/img/shop-sudadera.jpg",
+        "img": "/assets/img/shop-sudadera.jpg",
         "subcategories": [
             {
                 "title": "Featured",
@@ -165,7 +165,7 @@ export const categories: Category[] = [
     },
     {
         "title": "Women",
-        "img": "/src/assets/img/shop-women.jpg",
+        "img": "/assets/img/shop-women.jpg",
         "subcategories": [
             {
                 "title": "Featured",
@@ -238,7 +238,7 @@ export const categories: Category[] = [
     },
     {
         "title": "Kids",
-        "img": "/src/assets/img/shop-tshirt.jpg",
+        "img": "/assets/img/shop-tshirt.jpg",
         "subcategories": [
             {
                 "title": "Featured",
@@ -311,7 +311,7 @@ export const categories: Category[] = [
     },
     {
         "title": "Deals",
-        "img": "/src/assets/img/shop-boxy.jpg",
+        "img": "/assets/img/shop-boxy.jpg",
         "subcategories": [
             {
                 "title": "Discounts and Offers",
@@ -412,7 +412,7 @@ export const stores: Store[] = [
     {
         id: "1",
         name: "Fashion Boutique",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "A trendy boutique with the latest fashion collections.",
         location: "123 Fashion Avenue, Cityville, CV",
         openingHours: "Mon-Sat: 10:00 AM - 8:00 PM, Sun: 11:00 AM - 6:00 PM"
@@ -420,7 +420,7 @@ export const stores: Store[] = [
     {
         id: "2",
         name: "Tech Haven",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "Your go-to place for all things tech and electronics.",
         location: "456 Gadget Street, Techland, TL",
         openingHours: "Mon-Fri: 9:00 AM - 7:00 PM, Sat-Sun: 10:00 AM - 6:00 PM"
@@ -428,7 +428,7 @@ export const stores: Store[] = [
     {
         id: "3",
         name: "Green Groceries",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "A supermarket specializing in organic and fresh produce.",
         location: "789 Healthy Lane, Healthville, HV",
         openingHours: "Mon-Sat: 8:00 AM - 9:00 PM, Sun: 9:00 AM - 7:00 PM"
@@ -436,7 +436,7 @@ export const stores: Store[] = [
     {
         id: "4",
         name: "Book Nook",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "A cozy bookstore offering a wide selection of books.",
         location: "101 Reading Road, Booktown, BT",
         openingHours: "Mon-Sat: 10:00 AM - 7:00 PM, Sun: 11:00 AM - 5:00 PM"
@@ -444,7 +444,7 @@ export const stores: Store[] = [
     {
         id: "5",
         name: "Café Delight",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "A charming café with delicious coffee and pastries.",
         location: "222 Coffee Street, Cafetown, CT",
         openingHours: "Mon-Fri: 7:00 AM - 6:00 PM, Sat-Sun: 8:00 AM - 5:00 PM"
@@ -452,7 +452,7 @@ export const stores: Store[] = [
     {
         id: "6",
         name: "Sports World",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "Your destination for sports gear and equipment.",
         location: "333 Athlete Avenue, Sportsville, SV",
         openingHours: "Mon-Sat: 9:00 AM - 8:00 PM, Sun: 10:00 AM - 6:00 PM"
@@ -460,7 +460,7 @@ export const stores: Store[] = [
     {
         id: "7",
         name: "Home Essentials",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "A store for all your home improvement and decor needs.",
         location: "444 Homestead Road, Hometown, HT",
         openingHours: "Mon-Fri: 8:30 AM - 7:30 PM, Sat-Sun: 9:30 AM - 6:30 PM"
@@ -468,7 +468,7 @@ export const stores: Store[] = [
     {
         id: "8",
         name: "Pet Paradise",
-        img: '/src/assets/img/new-york-store.jpg',
+        img: '/assets/img/new-york-store.jpg',
         description: "A pet store with everything for your furry friends.",
         location: "555 Pet Lane, Petville, PV",
         openingHours: "Mon-Sat: 9:00 AM - 6:00 PM, Sun: 10:00 AM - 5:00 PM"
