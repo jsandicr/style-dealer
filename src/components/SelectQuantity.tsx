@@ -3,11 +3,11 @@ import { Product } from "../types"
 import { useCart } from "../hooks/useCart"
 import { quantity } from '../const';
 
-export const SelectQuantity = ({defaultValue, product} : { defaultValue?: string, product?: Product }) => {
+export const SelectQuantity = ({defaultValue, product, sizeId} : { defaultValue?: string, product?: Product, sizeId: string }) => {
     const { addProduct } = useCart()
     
     return(
-        <Select defaultValue={defaultValue} onValueChange={(value)=>addProduct(product!, undefined, parseInt(value))}>
+        <Select defaultValue={defaultValue} onValueChange={(value)=>addProduct(product!, sizeId, parseInt(value))}>
             <SelectTrigger className="w-[60px]">
                 <SelectValue placeholder="Select quantity" />
             </SelectTrigger>

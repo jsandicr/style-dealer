@@ -44,7 +44,7 @@ export const ProductCartItem: React.FC<Props> = ({isFavorite = false, item }) =>
                                     </div>
                                     <div className="flex items-center justify-between gap-2">
                                     <span>Quantity</span>
-                                    <SelectQuantity defaultValue={item?.quantity?.toString()} product={item.product} />
+                                    <SelectQuantity defaultValue={item?.quantity?.toString()} product={item.product} sizeId={item.size!._id.toString()} />
                                     </div>
                                 </div>
                                 <div className='flex gap-2 items-center'>
