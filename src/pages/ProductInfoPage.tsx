@@ -44,17 +44,16 @@ export const ProductInfoPage = () => {
     const [sizeSelected, setSizeSelected] = useState('')
 
     return(
-        <div className="relative px-10">
-            {
-                        !product ? (<p>No se encontro ningun producto</p>) :
-                        (
-            <Layout className="relative grid grid-cols-2 my-5">
+        <div className="relative lg:px-10">
+            {!product ? (<p>No se encontro ningun producto</p>) :
+            (
+            <Layout className="relative grid md:grid-cols-2 lg:grid-cols-2 my-5 gap-2">
                 <div>
-                    <div className="sticky top-0 border flex gap-4 justify-center border-none py-5">
-                        <div className="overflow-scroll h-[500px] w-16 no-scrollbar">
+                    <div className="sticky top-0 flex gap-4 justify-center py-5">
+                        <div className="overflow-scroll h-[500px] w-10 md:w-16 lg:w-16 no-scrollbar">
                             <div className="flex flex-col gap-3">
                                 <div className="relative">
-                                    <figure className="h-20">
+                                    <figure className="h-16 md:h-20 lg:h-20">
                                         <img
                                             className="object-cover object-center h-full w-full bg-white"
                                             src={product.img}
@@ -69,7 +68,7 @@ export const ProductInfoPage = () => {
                                 {
                                     product.additionalImages.map((img) => 
                                         <div key={id} className="relative">
-                                            <figure className="h-20">
+                                            <figure className="h-16 md:h-20 lg:h-2">
                                                 <img
                                                     className="object-cover object-center h-full w-full bg-white"
                                                     src={img}
@@ -87,7 +86,7 @@ export const ProductInfoPage = () => {
                             </div>
                         </div>
                         <div>
-                            <figure className="h-[550px] w-96">
+                            <figure className="h-[450px] md:h-[500px] lg:h-[550px] w-80 lg:w-96">
                                 <img
                                     className="object-cover object-center h-full w-full bg-white"
                                     src={hoverElement.img}
@@ -107,18 +106,18 @@ export const ProductInfoPage = () => {
                         </div>
                         <div className="grid grid-cols-3 gap-2">
                             {
-                                sizes.map(({size, available})=>
+                                sizes.map(({_id, size, available})=>
                                     <Button
                                         variant='outline'
-                                        key={size}
+                                        key={_id}
                                         disabled={available !== true}
-                                        className={`p-5 ${sizeSelected === size ? 'border-black border-2': ''}`}
-                                        onClick={() => setSizeSelected(size)}>{size} </Button>
+                                        className={`p-5 ${sizeSelected === _id ? 'border-black border-2': ''}`}
+                                        onClick={() => sizeSelected !== _id ? setSizeSelected(_id) : setSizeSelected('')}>{size} </Button>
                                 )
                             }
                         </div>
                         <div className="flex gap-3">
-                            <AddToCartBtn className="w-full p-7" product={product}/>
+                            <AddToCartBtn className="w-full p-7" product={product} sizeId={sizeSelected} />
                             <AddToFavBtn className="w-full p-7" product={product}/>
                         </div>
                     </div>

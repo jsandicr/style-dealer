@@ -16,7 +16,7 @@ export const CategoryCard: React.FC<Props> = ({category}) => {
             <div className="h-full w-full absolute border z-10 flex justify-center items-center flex-col text-white" style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
                 {category.title}
                 <Link to={`/products/${category.title}`}>
-                    <Button className="m-5 bg-white text-black">
+                    <Button className="m-5" variant='secondary'>
                         View
                     </Button>
                 </Link>

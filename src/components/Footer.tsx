@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react"
 export const Footer = () => {
     return(
         <footer className="w-full h-full border text-center flex justify-center gap-2 p-2">
-            <p className="flex">made with love by @jsandi <span className="font-bold mx-1">|</span> contacts</p>
+            <p className="flex">made with &#9829; by @jsandi <span className="font-bold mx-1">|</span> contacts</p>
             <a target="_blank" href="https://github.com/jsandicr">
                 <Github strokeWidth={1.25} />
             </a>

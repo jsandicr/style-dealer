@@ -8,8 +8,8 @@ interface Props {
 
 type CartContextType = {
     cart: Cart;
-    addProduct: (product: Product, sizeId: string, quantity?: number) => void;
-    removeProduct: (product: Product) => void;
+    addProduct: (product: Product, sizeId: string, quantity?: number, itemId?: string) => void;
+    removeProduct: (item_id: string) => void;
     clearCart: () => void;
 };
 

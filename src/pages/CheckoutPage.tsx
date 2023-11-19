@@ -3,6 +3,8 @@ import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group"
 import { Label } from '../components/ui/label'
 import { Input } from "../components/ui/input"
 import { Select, SelectContent, SelectTrigger, SelectItem, SelectValue} from "../components/ui/select"
+import { AlertCircle, CheckCircle } from "lucide-react"
+import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert"
 import { Button } from "../components/ui/button"
 import { Layout } from "../components/Layout"
 import { Separator } from '../components/ui/separator'
@@ -11,10 +13,14 @@ import { ProductCard } from "../components/ProductCard"
 import { useCart } from '../hooks/useCart';
 import { useFav } from "../hooks/useFav"
 import { Link } from "react-router-dom"
+import { useState } from 'react'
 
 const api_uri = import.meta.env.VITE_API_URI+"purchase/"
 
 export const CheckoutPage = () => {
+
+    const [checkoutSuccess, setCheckoutSuccess] = useState<null | boolean>(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const { cart, clearCart } = useCart()
     const { fav } = useFav()
@@ -22,14 +28,12 @@ export const CheckoutPage = () => {
     const handleSubmit = async(e: React.FormEvent) => {
         e.preventDefault();
 
-        console.log(cart.cartItems)
-
         const options: RequestInit = {
             method: "POST",
             body: JSON.stringify({
                 amount: cart.total,
                 items: cart.cartItems,
-                userId: '1'
+                userEmail: cart.userEmail
             }),
             headers: {
                 Accept: "application/json, text/plain",
@@ -37,19 +41,32 @@ export const CheckoutPage = () => {
             }
         };
 
-        const response = await fetch(api_uri+"checkout", options)
-        if (!response.ok) {
-            if(response.status === 400){
-                const errorResponse = await response.json();
-                console.log("Insufficient Quantity in Stock: ",errorResponse.product._id)
-                return;
+        try{
+            const response = await fetch(api_uri+"checkout", options)
+            if (!response.ok) {
+                if (response.status === 400) {
+                    const errorResponse = await response.json();
+                    setErrorMessage('Error: ' + errorResponse.message);
+                    setCheckoutSuccess(false);
+                    setTimeout(() => {
+                        setCheckoutSuccess(null);
+                    }, 2000);
+                    return;
+                }
+                throw new Error("Failed to fetch data");
             }
-            throw new Error("Failed to fetch data");
+            setCheckoutSuccess(true);
+            setTimeout(() => {
+                setCheckoutSuccess(null);
+            }, 2000);
+            clearCart()
+        }catch(e){
+            console.log("Err try: ", e)
         }
-        clearCart()
     }
 
     return(
+        <>
             <div>
                 <Layout className='grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 grid-rows-1 md:grid-rows-1 lg:grid-rows-1 gap-10'>
                     <div className="col-span-1 md:col-span-3 lg:col-span-3">
@@ -82,16 +99,16 @@ export const CheckoutPage = () => {
                                 <CardContent className="grid gap-6">
                                     <div className="flex justify-between">
                                         <Label>Subtotal</Label>
-                                        <Label>{cart.total ? cart.total : '-'}</Label>
+                                        <Label>{cart.total ? cart.total : '-'}€</Label>
                                     </div>
                                     <div className="flex justify-between">
-                                        <Label>Gastos de gestion y envio</Label>
-                                        <Label>Gratis</Label>
+                                        <Label>Shipping and handling charges</Label>
+                                        <Label>Free</Label>
                                     </div>
                                     <Separator />
                                     <div className="flex justify-between">
                                         <Label>Total</Label>
-                                        <Label>{cart.total ? cart.total : '-'}</Label>
+                                        <Label>{cart.total ? cart.total : '-'}€</Label>
                                     </div>
                                     <Separator />
                                 </CardContent>
@@ -256,5 +273,25 @@ export const CheckoutPage = () => {
                     <Trend />
                 </Layout>
             </div>
+            {checkoutSuccess === false && (
+                <div style={{position: 'sticky', bottom: '20px', left: '20px', width: '50%'}}>
+                    <Alert variant="destructive">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                            {errorMessage}
+                        </AlertDescription>
+                    </Alert>
+                </div>
+            )}
+            {checkoutSuccess === true && (
+                <div style={{position: 'sticky', bottom: '20px', left: '20px', width: '50%'}}>
+                    <Alert variant="success">
+                        <CheckCircle className="h-4 w-4"/>
+                        <AlertTitle>Purchase completed</AlertTitle>
+                    </Alert>
+                </div>
+            )}
+            </>
     )
 }

@@ -9,10 +9,11 @@ import { SelectSizeModal } from "./SelectSizeModal";
 type BtnProps = {
     product: Product,
     className?: string,
-    sizeId?: string
+    sizeId?: string,
+    itemId?: string 
 };
 
-export const AddToCartBtn: React.FC<BtnProps> = ({product, className, sizeId}) => {
+export const AddToCartBtn: React.FC<BtnProps> = ({product, className, sizeId, itemId}) => {
     const { addProduct } = useCart();
     const { removeFav } = useFav();
 
@@ -30,7 +31,7 @@ export const AddToCartBtn: React.FC<BtnProps> = ({product, className, sizeId}) =
                     return;
                 }
                 removeFav(product)
-                addProduct(product, sizeId)
+                addProduct(product, sizeId, undefined, itemId)
             }}>
                 <ShoppingBag strokeWidth={1.5}/>
             </Button>

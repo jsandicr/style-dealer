@@ -21,7 +21,7 @@ export const Cart = () => {
                     <ShoppingBag className="h-4 w-4"/>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className='w-[450px]'>
+            <DropdownMenuContent className='w-[90vw] md:w-[450px] lg:w-[450px] mr-7 md:mr-3 lg:mr-3 mt-2'>
                     <Card className="rounded-md p-4 gap-3 p-4 border-none">
                         <CardHeader>
                             <CardTitle>Cart</CardTitle>
@@ -38,7 +38,7 @@ export const Cart = () => {
                                             (
                                                 cart.cartItems.map((item) => (
                                                     <div
-                                                        key={item.id}
+                                                        key={item.id!+item.size?._id}
                                                     >
                                                         <ProductCartItem item={item} />
                                                         <Separator />
@@ -50,7 +50,7 @@ export const Cart = () => {
                                     </ScrollArea>
 
                                     <CardFooter className='pt-5 flex flex-col gap-2'>
-                                        <p>Total: {cart.total}</p>
+                                        <p>Total: {cart.total}€</p>
                                         <Link to={`/checkout`} style={{width: '100%'}}>
                                             <Button className="w-full">
                                                 Go to

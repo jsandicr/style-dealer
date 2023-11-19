@@ -11,29 +11,26 @@ import { Button } from "./ui/button"
 import { Heart, Settings, User } from "lucide-react"
 import { LogOutButton } from "./LogOutButton"
 import { LoginButton } from "./LoginButton"
-import { useResize } from "../hooks/useResize"
 
 export const Navbar = () => {
 
     const { user, isAuthenticated } = useAuth0();
-    const {screenSize} = useResize()
-
     return(
         <div>
             {
-                (screenSize === 'md' || screenSize === 'lg') && (
+                window.innerWidth > 900 && (
                     <NavbarAuth />
                 ) 
             }
             <div className="flex justify-between items-center px-10 py-6">
-                <Link to={`/`} style={{width: '10%'}}>
-                    <h1 className="font-semibold logo">
+                <Link to={`/`} style={{width: '25%'}}>
+                    <h1 className="font-semibold logo text-xs md:text-lg lg:text-lg">
                         Style Dealer
                     </h1>
                 </Link>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center md:gap-2 lg:gap-2">
                     {
-                        screenSize !== 'sm' && (
+                        window.innerWidth > 900 && (
                             <CategoriesNav />
                         )
                     }
@@ -41,7 +38,7 @@ export const Navbar = () => {
                     <FavCart />
                     <Cart />
                     {
-                        screenSize === 'sm' && (
+                        window.innerWidth < 900 && (
                                 isAuthenticated ? (
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>

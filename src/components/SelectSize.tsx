@@ -2,11 +2,11 @@ import { Select, SelectTrigger, SelectContent, SelectGroup, SelectItem, SelectVa
 import { Product, Size } from "../types"
 import { useCart } from "../hooks/useCart"
 
-export const SelectSize = ({sizes, defaultValue, product} : { sizes: Size[], defaultValue?: string, product?: Product }) => {
+export const SelectSize = ({sizes, defaultValue, product, itemId} : { sizes: Size[], defaultValue?: string, product?: Product, itemId?: string }) => {
     const { addProduct } = useCart()
     
     return(
-        <Select defaultValue={defaultValue} onValueChange={(value)=>addProduct(product!, value, undefined)}>
+        <Select defaultValue={defaultValue} onValueChange={(value)=> addProduct(product!, value, undefined, itemId) }>
             <SelectTrigger className="w-[60px]">
                 <SelectValue placeholder="Select size" />
             </SelectTrigger>

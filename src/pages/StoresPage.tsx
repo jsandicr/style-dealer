@@ -42,19 +42,31 @@ export const StoresPage = () => {
                 <figure className="h-96 w-96">
                     <img src={storeSelected?.img} alt={storeSelected?.name} className="object-cover object-center h-full w-full" />
                 </figure>
-                <div className="flex flex-col gap-2">
-                    <h2 className="font-bold">
-                        {storeSelected?.name}
-                    </h2>
-                    <p>
-                        {storeSelected?.description}
-                    </p>
-                    <p>
-                        {storeSelected?.location}
-                    </p>
-                    <p>
-                        {storeSelected?.openingHours}
-                    </p>
+                <div className="flex flex-col justify-between pb-16">
+                    <div className="flex flex-col gap-2">
+                        <h2 className="font-bold">
+                            {storeSelected?.name}
+                        </h2>
+                        <p>
+                            {storeSelected?.description}
+                        </p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <p className="font-bold">
+                            Location
+                        </p>
+                        <p>
+                            {storeSelected?.location}
+                        </p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <p className="font-bold">
+                            Open
+                        </p>
+                        <p>
+                            {storeSelected?.openingHours}
+                        </p>
+                    </div>
                 </div>
 
             </Card>

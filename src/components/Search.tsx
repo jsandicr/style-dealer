@@ -4,6 +4,7 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Product } from '../types';
 import { Link } from 'react-router-dom';
 import { Card } from './ui/card';
+import { Separator } from '@radix-ui/react-separator';
 
 export const Search = () => {
 
@@ -59,12 +60,9 @@ export const Search = () => {
     }, []);
 
     return(
-        <div  ref={searchContainerRef} className="relative flex justify-center items-center h-10 w-full rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <Button variant="ghost" className="h-19 rounded-full" onClick={() => fetchQueryProducts(lastSearch.current!)}>
-                <SearchIcon size={15} />
-            </Button>
-            <input placeholder="Search..." className="bg-transparent focus:outline-none" onChange={onSearchChange}/>
-            <Card className='absolute top-10 w-full rounded-md border bg'>
+        <div className="relative flex justify-center items-center h-10 w-full md:w-96 lg:w-full rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            <input placeholder="Search..." className="bg-transparent focus:outline-none w-full h-full p-2" onChange={onSearchChange} />
+            <Card className='absolute top-10 w-full rounded-md border bg z-20'>
             {
                 products && products.length > 0 && (
                     <ul className='w-full flex flex-col gap-2 z-20'>
@@ -72,9 +70,10 @@ export const Search = () => {
                             products.map((product)=>{
                                 return(
                                     <li key={product._id} className='w-full flex justify-center p-2'>
-                                            <Link to={`/products/info/${product._id}`} onClick={() => setProducts([])}>
-                                                <p>{product.title} </p>
-                                            </Link>
+                                        <Link to={`/products/info/${product._id}`} onClick={() => setProducts([])}>
+                                            <p>{product.title} </p>
+                                        </Link>
+                                        <Separator />
                                     </li>
                                 )
                             })

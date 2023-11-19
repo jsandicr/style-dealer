@@ -7,16 +7,17 @@ import { useCart } from "../hooks/useCart";
 
 type BtnProps = {
     product: Product,
-    className?: string
+    className?: string,
+    itemId?: string 
 };
 
-export const AddToFavBtn: React.FC<BtnProps> = ({product, className}) => {
+export const AddToFavBtn: React.FC<BtnProps> = ({product, className, itemId}) => {
     const { addFav } = useFav();
     const { removeProduct } = useCart()
 
     return(
         <Button variant='ghost' className={className} onClick={() => {
-            removeProduct(product)
+            if(itemId) removeProduct(itemId);
             addFav(product)}
         }>
             <Heart strokeWidth={1.5} />

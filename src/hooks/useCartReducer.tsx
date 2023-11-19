@@ -13,16 +13,17 @@ export const useCartReducer = () => {
 
     const { user } = useAuth0();
 
-    const addProduct = (product:Product, sizeId: string, quantity?: number) => {
+    const addProduct = (product:Product, sizeId: string, quantity?: number, itemId?: string) => {
         const sizeInList: number = sizes.findIndex(item => item._id === sizeId)
 
+        const randomNum = Math.floor(Math.random() * (9999 - 1 + 1)) + 9999;
+
         const newCartItem: CartItem = {
-            id: product._id,
+            id: itemId ?? randomNum.toString(),
             quantity: quantity,
             product: product,
             size: sizes[sizeInList]
         }
-
 
         if(cart.userEmail === '' || undefined) cart.userEmail = user?.email ?? ''
 
@@ -32,17 +33,34 @@ export const useCartReducer = () => {
         })
     }
 
-    const removeProduct = (product:Product) => {
+    const removeProduct = (itemId:string) => {
+
+        const p: Product = {
+            _id: '',
+            title: '',
+            category: '',
+            price: 0,
+            img: '',
+            color: '',
+            description: '',
+            sizes: '',
+            ratings: [],
+            labels: [],
+            additionalImages: [],
+            entryDate: new Date()
+        }
+
         const newCartItem: CartItem = {
-            id: product._id,
+            id: itemId,
             quantity: 0,
-            product: product,
+            product: p,
             size: undefined
         }
         dispatch({
             type: REMOVE_PRODUCT,
             payload: newCartItem
         })
+        if(cart.userEmail === '' || undefined) cart.userEmail = user?.email ?? ''
     }
 
     const clearCart = () => {

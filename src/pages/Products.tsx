@@ -17,7 +17,7 @@ export const Products = () => {
 
     const { sizes } = useSize()
     const [ showFilters, setShowFilters ] = useState(true)
-    const { addGender, addDiscount, addPrice, addSize, clearFilters, filtersApply } = useFilterReducer()
+    const { addGender, addDiscount, addPrice, clearFilters, filtersApply } = useFilterReducer()
 
     const { products, orderByProducts } = useProducts(filtersApply)
     const params = useParams()
@@ -40,23 +40,9 @@ export const Products = () => {
                 if(index === 2) {
                     addPrice(value);
                 }
-                if(index === 3) {
-                    addSize(value);
-                }
             }
         });
-    }, [addGender, addDiscount, addPrice, addSize]);
-
-    useEffect(()=>{
-        const filtersToCheck = [...filters]
-        filtersToCheck.forEach((filter) => {
-            if(filter.title == "Size"){
-                sizes.forEach((size)=> {
-                    filter.options.push(size.size)
-                })
-            }
-        })
-    }, [sizes])
+    }, [addGender, addDiscount, addPrice]);
 
     useEffect(()=>{
         clearFilters()
@@ -69,11 +55,14 @@ export const Products = () => {
     return(
         <>
         <Layout className="w-full flex justify-between my-4 ">
-            <span className="text-xl">{decodeValue(params.category)} - {decodeValue(params.subcategory)} </span>
+            <span className="text-xl">
+                {decodeValue(params.category)}
+                {params.subcategory && ` - ${decodeValue(params.subcategory)}`}
+            </span>
             <div className="flex gap-2">
                 <Button className="flex gap-2"
                     onClick={()=> setShowFilters(!showFilters)}>
-                    <span>{showFilters ? 'Hide filters' : 'Show filters'}</span>
+                    <span>Filters</span>
                     <SlidersHorizontal size={20} strokeWidth={1} />
                 </Button>
                 <Select onValueChange={(value)=>{
@@ -125,26 +114,6 @@ export const Products = () => {
                                                         })
                                                     }
                                                 </ul>
-                                            ) || type === typeFilters.size && (
-                                                <ul className="grid grid-cols-3 justify-between gap-2">
-                                                    {
-                                                        sizes.map(({size, available})=>{
-                                                            const isChecked = filtersApply.size === size;
-                                                            return(
-                                                                <li key={size}>
-                                                                    <Button
-                                                                        variant='outline'
-                                                                        key={size}
-                                                                        disabled={available !== true}
-                                                                        className={`p-5 hover:border-black ${isChecked ? 'border-black' : ''}`}
-                                                                        onClick={() => {
-                                                                            validateFilters(size)
-                                                                        }}>{size}</Button>
-                                                                </li>
-                                                            )
-                                                        })
-                                                    }
-                                                </ul>
                                             )
                                         }
                                         </AccordionContent>
@@ -155,7 +124,7 @@ export const Products = () => {
                     }
                 </div>
             </div>
-            <div className={`${showFilters ? 'col-span-3' : 'col-span-4'} ${products.length === 0 ? 'h-[70vh]' : undefined} grid grid-cols-3 p-5 gap-2`}>
+            <div className={`${showFilters ? 'col-span-3' : 'col-span-4'} ${products.length === 0 ? 'h-[70vh]' : undefined} grid md:grid-cols-2 lg:grid-cols-3 p-5 gap-2`}>
                 {
                     products.length > 0 ? products.map((product)=>{
                         return(

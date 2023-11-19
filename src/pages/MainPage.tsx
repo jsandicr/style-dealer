@@ -7,7 +7,7 @@ export const MainPage = () => {
     return(
         <div className="flex flex-col gap-20">
             <Layout>
-                <div className="grid lg:grid-cols-3 grid-row-5 lg:grid-rows-2 gap-5 border h-[130vh] md:h-[80vh]">
+                <div className="grid lg:grid-cols-3 grid-row-5 lg:grid-rows-2 gap-5 h-[130vh] md:h-[80vh] w-full">
                     {
                         categories.map((category, index)=>{
                             return(

@@ -12,7 +12,6 @@ export const FILTER_ACTIONS = {
     GENDER: 'GENDER',
     DISCOUNT: 'DISCOUNT', 
     PRICE: 'PRICE',
-    SIZE: 'SIZE',
     ORDER_BY: 'ORDER_BY',
     CLEAR: 'CLEAR'
 }
@@ -20,7 +19,7 @@ export const FILTER_ACTIONS = {
 export const filterReducer = (state: typeof initialStatedFiltersApply, action: ActionType): typeof initialStatedFiltersApply => {
 
     const { type, payload } : { type: string; payload?: string } = action
-    const { GENDER, DISCOUNT, PRICE, SIZE, ORDER_BY, CLEAR } = FILTER_ACTIONS
+    const { GENDER, DISCOUNT, PRICE, ORDER_BY, CLEAR } = FILTER_ACTIONS
     
     switch(type){
         case GENDER: {
@@ -46,14 +45,6 @@ export const filterReducer = (state: typeof initialStatedFiltersApply, action: A
             const newState = {
                 ...state,
                 price: payload ?? ''
-            }
-            return newState
-        }
-        case SIZE: {
-            if(state.size === payload) break
-            const newState = {
-                ...state,
-                size: payload ?? ''
             }
             return newState
         }

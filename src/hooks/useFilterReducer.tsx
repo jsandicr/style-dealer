@@ -4,7 +4,7 @@ import { filterReducer, FILTER_ACTIONS, initialStatedFiltersApply } from "../red
 export const useFilterReducer = () => {
     const [ filtersApply, dispatch ] = useReducer(filterReducer, initialStatedFiltersApply);
 
-    const { GENDER, DISCOUNT, ORDER_BY, PRICE, SIZE, CLEAR } = FILTER_ACTIONS
+    const { GENDER, DISCOUNT, ORDER_BY, PRICE, CLEAR } = FILTER_ACTIONS
     
     const addGender = (gender?: string) => {
         gender = filtersApply.gender === gender ? undefined : gender
@@ -37,19 +37,11 @@ export const useFilterReducer = () => {
         })
     }
 
-    const addSize = (size?: string) => {
-        size = filtersApply.size === size ? undefined : size
-        dispatch({
-            type: SIZE,
-            payload: size
-        })
-    }
-
     const clearFilters = () => {
         dispatch({
             type: CLEAR
         })
     }
 
-    return ({ addGender, addDiscount, addOrderBy, addPrice, addSize, clearFilters, filtersApply })
+    return ({ addGender, addDiscount, addOrderBy, addPrice, clearFilters, filtersApply })
 }

@@ -31,7 +31,7 @@ export const ProductCartItem: React.FC<Props> = ({isFavorite = false, item }) =>
                                     {item?.product.price} €
                                 </div>
                                 <div className='flex'>
-                                    <AddToCartBtn product={item.product} />
+                                    <AddToCartBtn product={item.product} itemId={item.id} />
                                     <DeleteFromFavBtn product={item.product} />
                                 </div>
                             </>
@@ -40,16 +40,16 @@ export const ProductCartItem: React.FC<Props> = ({isFavorite = false, item }) =>
                                 <div className="flex flex-col gap-2">
                                     <div className="flex items-center justify-between gap-2">
                                         <span>Size</span>
-                                        <SelectSize sizes={sizes} defaultValue={item?.size?._id.toString()} product={item.product} />
+                                        <SelectSize sizes={sizes} defaultValue={item?.size?._id.toString()} product={item.product} itemId={item.id} />
                                     </div>
                                     <div className="flex items-center justify-between gap-2">
                                     <span>Quantity</span>
-                                    <SelectQuantity defaultValue={item?.quantity?.toString()} product={item.product} sizeId={item.size!._id.toString()} />
+                                    <SelectQuantity defaultValue={item?.quantity?.toString()} product={item.product} sizeId={item.size!._id.toString()} itemId={item.id} />
                                     </div>
                                 </div>
                                 <div className='flex gap-2 items-center'>
                                     {item?.product.price} €
-                                    <DeleteFromCartBtn product={item.product} />
+                                    <DeleteFromCartBtn itemId={item.id!} />
                                 </div>
                             </>
                         )

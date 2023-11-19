@@ -7,7 +7,7 @@ type LayoutProps = {
 
 export const Layout: React.FC<LayoutProps> = ({children, className}) => {
     return(
-        <div className={`px-10 ${className}`}>
+        <div className={`px-10 ${className} w-[100vw]`}>
             {children}
         </div>
     )

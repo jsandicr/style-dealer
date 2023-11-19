@@ -48,18 +48,19 @@ export const cartReducer = (state: typeof initialStateCart, action: ActionType):
         case ADD_PRODUCT: {
 
             if (!payload) return state;
-
-            const productInCartId = state.cartItems.findIndex(item => item.id === payload.product._id);
-
+            
+            const productInCartId = state.cartItems.findIndex(item => item.id === payload.id);
+            
             if (productInCartId >= 0) {
                 const newState = {
                     ...state,
                     cartItems: state.cartItems.map((item, index) => {
                         if (index === productInCartId) {
-                            const newQuantity = payload.size === undefined
+                            const newQuantity = payload.quantity !== undefined
                                 ? (payload.quantity ?? item.quantity! + 1)
                                 : item.quantity;
                             const newSize = payload.size ? payload.size : item.size;
+                            
                             return { ...item, quantity: newQuantity, size: newSize };
                         }
                         return item;
@@ -87,11 +88,20 @@ export const cartReducer = (state: typeof initialStateCart, action: ActionType):
         }
         case REMOVE_PRODUCT: {
             if (!payload) return state;
+
+            const itemIndex = state.cartItems.findIndex(item => item.id === payload.id);
+            if (itemIndex === -1) return state;
+
+            const newCartItems = [...state.cartItems];
+            newCartItems.splice(itemIndex, 1);
+
             const newState = {
                 ...state,
-                cartItems: state.cartItems.filter(item => item.id !== payload.id)
+                cartItems: newCartItems
             };
-            updateLocalStorage(newState);
+
+            const newStateUpdated = updatePrice(newState);
+            updateLocalStorage(newStateUpdated);
             return newState;
         }
         case CLEAR_CART: {

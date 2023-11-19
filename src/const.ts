@@ -27,7 +27,7 @@ export const filters: Filter[] = [
     },
     {
         "id": 2,
-        "title": "Discounts and Offers",
+        "title": "Offers",
         "type" : typeFilters.check,
         "options": [
             "Up to -25%",
@@ -36,7 +36,7 @@ export const filters: Filter[] = [
     },
     {
         "id": 3,
-        "title": "Filtrar por precio",
+        "title": "Price",
         "type" : typeFilters.check,
         "options": [
             "€0 - €50",
@@ -44,12 +44,6 @@ export const filters: Filter[] = [
             "€100 - €150",
             "€150+"
         ]
-    },
-    {
-        "id": 4,
-        "title": "Size",
-        "type" : typeFilters.size,
-        "options": []
     }
 ]
 
