@@ -1,5 +1,3 @@
-import { Search as SearchIcon } from 'lucide-react';
-import { Button } from './ui/button';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Product } from '../types';
 import { Link } from 'react-router-dom';
