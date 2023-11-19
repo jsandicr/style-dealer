@@ -44,18 +44,18 @@ export const ProductInfoPage = () => {
     const [sizeSelected, setSizeSelected] = useState('')
 
     return(
-        <div className="relative">
+        <div className="relative flex flex-col gap-10">
             {!product ? (<p>No se encontro ningun producto</p>) :
             (
-            <Layout className="relative grid md:grid-cols-2 lg:grid-cols-2 my-5 gap-2">
-                <div>
-                    <div className="sticky top-0 flex gap-4 justify-center py-5">
+            <Layout className="relative grid md:grid-cols-2 lg:grid-cols-2 my-5 md:gap-2 lg:gap-2">
+                <div className="h-[65vh] md:h-full lg:h-full ">
+                    <div className="sticky top-0 flex gap-3 justify-center md:py-5 lg:py-5">
                         <div className="overflow-scroll h-[500px] w-10 md:w-16 lg:w-16 no-scrollbar">
                             <div className="flex flex-col gap-3">
                                 <div className="relative">
-                                    <figure className="h-16 md:h-20 lg:h-20">
+                                    <figure className="h-14 md:h-20 lg:h-20">
                                         <img
-                                            className="object-cover object-center h-full w-full bg-white"
+                                            className="object-cover object-center h-full w-full bg-white image-container"
                                             src={product.img}
                                             alt={product.title}
                                             onMouseEnter={() => setHoverElement({
@@ -68,9 +68,9 @@ export const ProductInfoPage = () => {
                                 {
                                     product.additionalImages.map((img) => 
                                         <div key={id} className="relative">
-                                            <figure className="h-16 md:h-20 lg:h-2">
+                                            <figure className="h-14 md:h-20 lg:h-20">
                                                 <img
-                                                    className="object-cover object-center h-full w-full bg-white"
+                                                    className="object-cover object-center h-full w-full bg-white image-container"
                                                     src={img}
                                                     alt={img}
                                                     onMouseEnter={() => setHoverElement({
@@ -80,15 +80,14 @@ export const ProductInfoPage = () => {
                                             </figure>
                                             <div className={`${img === hoverElement.img ? 'absolute' : 'hidden'} w-full h-full z-10 top-0 left-0`} style={{backgroundColor: 'rgba(0, 0, 0, 0.4)'}}/>
                                         </div>
-                                        
                                     )
                                 }
                             </div>
                         </div>
                         <div>
-                            <figure className="h-[450px] md:h-[500px] lg:h-[550px] w-80 lg:w-96">
+                            <figure className="h-[400px] md:h-[500px] lg:h-[550px] w-76 lg:w-96">
                                 <img
-                                    className="object-cover object-center h-full w-full bg-white"
+                                    className="object-cover object-center h-full w-full bg-white image-container"
                                     src={hoverElement.img}
                                     alt={hoverElement.img}
                                 />

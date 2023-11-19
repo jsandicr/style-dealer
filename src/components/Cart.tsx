@@ -21,7 +21,7 @@ export const Cart = () => {
                     <ShoppingBag className="h-4 w-4"/>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className='w-[90vw] md:w-[450px] lg:w-[450px] mr-7 md:mr-3 lg:mr-3 mt-2'>
+            <DropdownMenuContent className='w-[90vw] md:w-[450px] lg:w-[450px] mr-4 md:mr-3 lg:mr-3 mt-2'>
                     <Card className="rounded-md p-4 gap-3 p-4 border-none">
                         <CardHeader>
                             <CardTitle>Cart</CardTitle>

@@ -17,8 +17,8 @@ export const ProductCartItem: React.FC<Props> = ({isFavorite = false, item }) =>
     const { sizes } = useSize()
 
     return(
-        <Card className='flex w-80 border-none'>
-            <CardContent className='flex justify-between items-center w-full p-1'>
+        <Card className='flex w-64 md:w-80 lg:w-80 border-none'>
+            <CardContent className='flex gap-2 md:gap-0 lg:gap-0 md:justify-between items-center w-full p-1'>
                 <figure className="h-36 w-36">
                     <img src={item.product.img} alt={item.product.title} className="object-cover object-center h-full w-full" />
                 </figure>

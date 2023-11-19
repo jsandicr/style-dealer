@@ -20,7 +20,7 @@ export const ProductCard: React.FC<Props> = ({isFavorite = false, item}) => {
     if(!item) return
 
     return(
-        <Card className='flex'>
+        <Card className='flex flex-col items-center md:flex-row lg:flex-row border-none'>
             <figure className="h-52 w-64">
                 <img src={item.product.img} alt={item.product.title} className="object-cover object-center h-full w-full" />
             </figure>

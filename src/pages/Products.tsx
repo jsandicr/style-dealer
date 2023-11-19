@@ -54,12 +54,12 @@ export const Products = () => {
 
     return(
         <>
-        <Layout className="w-full flex justify-between my-4 ">
-            <span className="text-xl">
+        <Layout className="w-full flex justify-between my-4 gap-2">
+            <span className="text-sm md:text-xl lg:text-xl">
                 {decodeValue(params.category)}
                 {params.subcategory && ` - ${decodeValue(params.subcategory)}`}
             </span>
-            <div className="flex gap-2">
+            <div className="flex gap-1 md:gap-2 lg:gap-2">
                 <Button className="flex gap-2"
                     onClick={()=> setShowFilters(!showFilters)}>
                     <span>Filters</span>
@@ -68,7 +68,7 @@ export const Products = () => {
                 <Select onValueChange={(value)=>{
                     orderByProducts(value)
                 }}>
-                    <SelectTrigger className="w-[180px]">
+                    <SelectTrigger className="w-[100px] md:w-[180px] lg:w-[180px]">
                         <SelectValue placeholder="Order by" />
                     </SelectTrigger>
                     <SelectContent>
@@ -87,7 +87,7 @@ export const Products = () => {
         </Layout>
         <Layout className="grid grid-cols-4">
             <div className={`${showFilters ? '' : 'hidden'} relative col-span-1`}>
-                <div className="sticky top-0">
+                <div className="sticky top-28">
                     {
                         filters.map(({id, title, type, options})=>{
                             return(
@@ -124,7 +124,7 @@ export const Products = () => {
                     }
                 </div>
             </div>
-            <div className={`${showFilters ? 'col-span-3' : 'col-span-4'} ${products.length === 0 ? 'h-[70vh]' : undefined} grid md:grid-cols-2 lg:grid-cols-3 p-5 gap-2`}>
+            <div className={`${showFilters ? 'col-span-3' : 'col-span-4'} ${products.length === 0 ? 'h-[70vh]' : undefined} grid md:grid-cols-2 lg:grid-cols-3 md:p-5 p-2 lg:p-5 gap-2`}>
                 {
                     products.length > 0 ? products.map((product)=>{
                         return(

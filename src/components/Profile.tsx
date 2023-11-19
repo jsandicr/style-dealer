@@ -2,11 +2,12 @@ import { User } from "@auth0/auth0-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu"
-import { Heart } from "lucide-react"
+import { Heart, Store } from "lucide-react"
 import { LogOutButton } from "./LogOutButton"
 import { useResize } from '../hooks/useResize'
 import { ChangeThemeBtn } from "./ChangeThemeBtn"
-
+import { Link } from 'react-router-dom'
+ 
 type Props = {
     user: User
 } 
@@ -35,11 +36,19 @@ export const Profile: React.FC<Props> = ({user}) => {
                         </DropdownMenuItem>
                     )
                 }
-                
                 <DropdownMenuItem>
-                    <Heart className="mr-2 h-4 w-4"/>
-                    <span>Favorites</span>
+                    <Link to={'/fav'} style={{display: 'flex'}}>
+                        <Heart className="mr-2 h-4 w-4"/>
+                        Favorites
+                    </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Link to={'/stores'} style={{display: 'flex'}}>
+                        <Store className="mr-2 h-4 w-4"/>
+                        Stores
+                    </Link>
+                </DropdownMenuItem>
+                
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                     <LogOutButton />
