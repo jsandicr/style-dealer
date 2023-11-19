@@ -1,5 +1,4 @@
 import { useContext , useEffect} from "react"
-
 import { ResizeContext } from "../context/resize"
 
 export function useResize(){    
@@ -7,9 +6,15 @@ export function useResize(){
 
     useEffect(()=>{
         const handleSize = () => {
-            if(window.innerWidth <= 768) setScreenSize('sm')
-            if(window.innerWidth > 768 && window.innerWidth <= 1024) setScreenSize('md')
-            if(window.innerWidth > 1024) setScreenSize('lg')
+            const width = window.innerWidth;
+
+            if (width <= 768) {
+                setScreenSize('sm')
+            } else if (width > 768 && width <= 1024) {
+                setScreenSize('md')
+            } else {
+                setScreenSize('lg')
+            }
         }
     
         window.addEventListener("resize", handleSize)
@@ -18,7 +23,7 @@ export function useResize(){
         return () => {
             window.removeEventListener("resize", handleSize);
         }
-    },[])
+    },[setScreenSize])
 
     return { screenSize }
 }

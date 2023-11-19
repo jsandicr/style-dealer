@@ -44,7 +44,7 @@ export const ProductInfoPage = () => {
     const [sizeSelected, setSizeSelected] = useState('')
 
     return(
-        <div className="relative lg:px-10">
+        <div className="relative">
             {!product ? (<p>No se encontro ningun producto</p>) :
             (
             <Layout className="relative grid md:grid-cols-2 lg:grid-cols-2 my-5 gap-2">
@@ -130,11 +130,10 @@ export const ProductInfoPage = () => {
                     </div>
                 </div>
             </Layout>
-            )
-        }
-            <Layout className="my-10">
-                <Trend />
-            </Layout>
-        </div>
+        )}
+        <Layout>
+            <Trend />
+        </Layout>
+    </div>
     )
 }

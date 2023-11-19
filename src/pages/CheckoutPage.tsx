@@ -99,7 +99,7 @@ export const CheckoutPage = () => {
                                 <CardContent className="grid gap-6">
                                     <div className="flex justify-between">
                                         <Label>Subtotal</Label>
-                                        <Label>{cart.total ? cart.total : '-'}€</Label>
+                                        <Label>{cart.total ? cart.total+'€' : '-'}</Label>
                                     </div>
                                     <div className="flex justify-between">
                                         <Label>Shipping and handling charges</Label>
@@ -108,7 +108,7 @@ export const CheckoutPage = () => {
                                     <Separator />
                                     <div className="flex justify-between">
                                         <Label>Total</Label>
-                                        <Label>{cart.total ? cart.total : '-'}€</Label>
+                                        <Label>{cart.total ? cart.total+'€' : '-'}</Label>
                                     </div>
                                     <Separator />
                                 </CardContent>
