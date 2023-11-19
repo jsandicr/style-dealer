@@ -1,7 +1,6 @@
 import { Card, CardDescription, CardContent, CardFooter } from "./ui/card"
 import { Link } from 'react-router-dom'
-import { useProducts } from '../hooks/useProducts'
-import '@splidejs/react-splide/css';
+import { useProducts } from '../hooks/useProducts';
 import { Separator } from "../components/ui/separator";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
