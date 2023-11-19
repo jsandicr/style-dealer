@@ -38,7 +38,7 @@ export const StoresPage = () => {
                     }
                 </div>
             </ScrollArea>
-            <Card className={`col-span-2 flex flex-col md:flex-row lg:flex-row p-5 gap-5 border`}>
+            <Card className={`col-span-2 flex flex-col md:flex-row lg:flex-row p-5 gap-5`}>
                 <figure className="h-48 md:h-96 lg:h-96 w-40 md:w-96 lg:w-96">
                     <img src={storeSelected?.img} alt={storeSelected?.name} className="object-cover object-center h-full w-full" />
                 </figure>
